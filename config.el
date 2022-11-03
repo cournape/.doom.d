@@ -42,6 +42,15 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
+;; Configuration inspired from https://github.com/rougier/emacs-gtd
+(setq org-agenda-files (list "inbox.org"))
+
+(after! org
+  (setq org-capture-templates
+         `(("i" "Inbox" entry  (file "inbox.org")
+          ,(concat "* TODO %?\n"
+                   "/Entered on/ %U"))
+           ("n" "Personal notes" entry (file "notes.org")))))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
